@@ -1,14 +1,13 @@
-from flask import Flask
-from flask import request
+# Run this file when the first time to init the program
 
-app = Flask(__name__,
-            template_folder="../client/dist",
-            static_folder="../client/dist/static")
+import utils
 
-from views import app
-
-@app.route('/test', methods=["POST"])
-def test():
-    text = request.json.get("text")
-    res = text + '-response'
-    return res
+utils.sql(
+    '''CREATE TABLE users (
+        userId TEXT UNIQUE,
+        username TEXT,
+        passwordSalt TEXT,
+        passwordHash TEXT,
+        approved INTEGER
+    )'''
+)

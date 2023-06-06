@@ -18,7 +18,7 @@ export default {
     methods: {
         onSubmit() {
             this.axios
-                .post('/test', { text: this.text })
+                .post('/api/test', { text: this.text })
                 .then(res => {
                     this.result = res;
                 })
